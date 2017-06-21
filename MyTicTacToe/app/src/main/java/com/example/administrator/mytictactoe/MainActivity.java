@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //wire buttons
         View startButton = findViewById(R.id.start_button);
         startButton.setOnClickListener(this);
         View cootieButton = findViewById(R.id.cootie_button);
@@ -25,14 +26,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) { //make menu
         getMenuInflater().inflate(R.menu.menu_main,menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()){ //do selected menu option
             case R.id.action_about:
                 Intent aboutActivity = new Intent(this,AboutActivity.class);
                 startActivity(aboutActivity);
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()){ //do selected button option
 
             case R.id.start_button:
                 Intent startTicTacToeActivity = new Intent(this,TicTacToeActivity.class);

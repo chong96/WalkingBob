@@ -13,10 +13,11 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        //Wire button
         View backButton = findViewById(R.id.about_back);
         backButton.setOnClickListener(this);
     }
-    public void onClick(View v) {
+    public void onClick(View v) { //go back to main menu
         Intent mainScreenActivity = new Intent(this,MainActivity.class);
         finish();
         startActivity(mainScreenActivity);

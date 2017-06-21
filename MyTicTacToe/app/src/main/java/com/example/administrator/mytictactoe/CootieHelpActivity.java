@@ -12,10 +12,11 @@ public class CootieHelpActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cootie_help);
 
+        //wire button
         View backButton = findViewById(R.id.help_back);
         backButton.setOnClickListener(this);
     }
-    public void onClick(View v) {
+    public void onClick(View v) { //go back to main screen
         Intent mainScreenActivity = new Intent(this,CootieActivity.class);
         finish();
         startActivity(mainScreenActivity);
