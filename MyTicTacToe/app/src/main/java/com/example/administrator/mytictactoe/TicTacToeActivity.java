@@ -5,18 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class CootieActivity extends AppCompatActivity implements View.OnClickListener {
+public class TicTacToeActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cootie);
+        setContentView(R.layout.activity_tic_tac_toe);
 
         View startButton = findViewById(R.id.start_button);
         startButton.setOnClickListener(this);
         View exitButton = findViewById(R.id.exit_button);
         exitButton.setOnClickListener(this);
-
     }
 
     @Override
@@ -24,9 +23,9 @@ public class CootieActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
 
             case R.id.start_button:
-                Intent startCootie = new Intent(this,Cootie_GamePlay.class);
+                Intent gameActivity = new Intent(this,Real_GamePlay.class);
                 finish();
-                startActivity(startCootie);
+                startActivity(gameActivity);
                 break;
 
             case R.id.exit_button:

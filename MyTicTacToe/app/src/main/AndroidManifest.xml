@@ -28,7 +28,8 @@
             android:name=".AboutActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".CootieActivity" />
-        <activity android:name=".Cootie_GamePlay"></activity>
+        <activity android:name=".Cootie_GamePlay" />
+        <activity android:name=".TicTacToeActivity"></activity>
     </application>
 
 </manifest>

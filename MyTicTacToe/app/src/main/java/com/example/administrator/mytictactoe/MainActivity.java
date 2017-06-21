@@ -1,14 +1,12 @@
 package com.example.administrator.mytictactoe;
 
 import android.content.Intent;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
@@ -20,10 +18,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         View startButton = findViewById(R.id.start_button);
         startButton.setOnClickListener(this);
+        View cootieButton = findViewById(R.id.cootie_button);
+        cootieButton.setOnClickListener(this);
         View exitButton = findViewById(R.id.exit_button);
         exitButton.setOnClickListener(this);
-        View cootieButton = findViewById(R.id.cootieButton);
-        cootieButton.setOnClickListener(this);
     }
 
     @Override
@@ -57,19 +55,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         switch (v.getId()){
 
             case R.id.start_button:
-                Intent startGameActivity = new Intent(this,Real_GamePlay.class);
+                Intent startTicTacToeActivity = new Intent(this,TicTacToeActivity.class);
                 finish();
-                startActivity(startGameActivity);
+                startActivity(startTicTacToeActivity);
+                break;
+
+            case R.id.cootie_button:
+                Intent startCootieActivity = new Intent(this,CootieActivity.class);
+                finish();
+                startActivity(startCootieActivity);
                 break;
 
             case R.id.exit_button:
                 finish();
                 break;
-
-            case R.id.cootieButton:
-                Intent startCootieGame = new Intent(this,Cootie_GamePlay.class);
-                finish();
-                startActivity(startCootieGame);
 
         }
     }
