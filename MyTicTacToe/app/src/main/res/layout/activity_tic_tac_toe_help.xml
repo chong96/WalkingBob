@@ -10,15 +10,15 @@
         android:id="@+id/help"
         android:layout_width="232dp"
         android:layout_height="wrap_content"
-        android:text="Choose from two different games: Classic Tictactoe or Cootie Bug"
+        android:layout_marginTop="28dp"
+        android:text="Player 1 are X's and Player 2 are O's. Get three in a row to win!"
         android:textAlignment="center"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="27dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/smile" />
 
     <Button
         android:id="@+id/help_back"
@@ -34,14 +34,12 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/smile"
+        android:layout_width="224dp"
+        android:layout_height="192dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/sign"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:srcCompat="@drawable/smile"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="63dp" />
-
+        android:layout_marginTop="44dp" />
 </android.support.constraint.ConstraintLayout>
