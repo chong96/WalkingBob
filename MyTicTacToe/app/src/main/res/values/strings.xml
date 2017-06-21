@@ -15,5 +15,5 @@
     <string name="option_o">O</string>
 
     <string name="about">This app was developed by Bryan Chong. This is my first actual android app. I hope you enjoy it!</string>
-    <string name="help">How to Play: Player 1 are "X"s and Player 2 are "O"s. Get three in a row to win!</string>
+    <string name="tictactoe_help">How to Play: Player 1 are "X"s and Player 2 are "O"s. Get three in a row to win!</string>
 </resources>
