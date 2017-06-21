@@ -12,10 +12,11 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
+        //wire button
         View backButton = findViewById(R.id.help_back);
         backButton.setOnClickListener(this);
     }
-    public void onClick(View v) {
+    public void onClick(View v) { //go back to main screen
         Intent mainScreenActivity = new Intent(this,MainActivity.class);
         finish();
         startActivity(mainScreenActivity);

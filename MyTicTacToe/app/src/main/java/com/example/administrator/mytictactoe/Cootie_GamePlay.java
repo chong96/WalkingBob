@@ -17,10 +17,12 @@ public class Cootie_GamePlay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cootie__game_play);
 
+        //initialize cootie objects
         final Cootie player1 = new Cootie();
         final Cootie player2 = new Cootie();
         final int[] count = {0};
 
+        //wire buttons
         final CheckBox cbBody1 = (CheckBox)findViewById(R.id.cbBody1);
         final CheckBox cbBody2 = (CheckBox)findViewById(R.id.cbBody2);
         final CheckBox cbHead1 = (CheckBox)findViewById(R.id.cbHead1);
@@ -39,9 +41,9 @@ public class Cootie_GamePlay extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                if (!player1.isDone() && !player2.isDone()) {
-                    int roll = (int) roll();
-                    if (count[0] % 2 == 0) {
+                if (!player1.isDone() && !player2.isDone()) { //check to see if game is over after every roll
+                    int roll = (int) roll(); //roll the die
+                    if (count[0] % 2 == 0) { //determine who's turn it is
                         switch (roll) {
                             case 1:
                                 if (!player1.hasBody) {
@@ -193,7 +195,7 @@ public class Cootie_GamePlay extends AppCompatActivity {
                 }
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Cootie_GamePlay.this);
-                if (player1.isDone() || player2.isDone()) {
+                if (player1.isDone() || player2.isDone()) { //check to see if game is over after current roll
                     if (player1.isDone()) {
                         alertDialogBuilder
                                 .setMessage("Player 1 won!\nRestart Game?")
@@ -244,7 +246,7 @@ public class Cootie_GamePlay extends AppCompatActivity {
         return((6.0 * Math.random()) + 1);
     }
 
-    private void resetGame() {
+    private void resetGame() { //make a new game
         Intent newGameActivity = new Intent(this,Cootie_GamePlay.class);
         finish();
         startActivity(newGameActivity);
@@ -270,7 +272,7 @@ public class Cootie_GamePlay extends AppCompatActivity {
             eyes = 0;
         }
 
-        boolean isDone() {
+        boolean isDone() { //check to see if the bug is completely built
             boolean isDone = false;
             if (hasBoth && antennae && teeth && legs == 6 && eyes == 2){
                 isDone = true;

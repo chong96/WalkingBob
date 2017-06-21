@@ -26,6 +26,7 @@ public class Real_GamePlay extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real__game_play);
 
+        //wire buttons/grid
         View backButton  = findViewById(R.id.back_Button);
         backButton.setOnClickListener(this);
         View restartButton = findViewById(R.id.restart_Button);
@@ -54,7 +55,7 @@ public class Real_GamePlay extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()){ //mark boxes with x's or o's
 
             case R.id.button_1_1:
                 Button button_1_1 = (Button) v;
@@ -110,6 +111,7 @@ public class Real_GamePlay extends Activity implements View.OnClickListener{
                 position = 9;
                 break;
 
+            //do selected button options
             case R.id.back_Button:
                 Intent mainScreenActivity = new Intent(this,MainActivity.class);
                 finish();
@@ -124,19 +126,9 @@ public class Real_GamePlay extends Activity implements View.OnClickListener{
                 resetGame();
                 break;
 
-            case R.id.player_id1:
-                TextView player1 = (TextView) v;
-                setPlayerName(player1);
-                break;
-
-            case R.id.player_id2:
-                TextView player2 = (TextView) v;
-                setPlayerName(player2);
-                break;
-
         }
 
-        if (counter >= 5 && isGameOver(position) && !gameOver) {
+        if (counter >= 5 && isGameOver(position) && !gameOver) { //check conditions for if the game is over
 
             gameOver = true;
 
@@ -213,7 +205,7 @@ public class Real_GamePlay extends Activity implements View.OnClickListener{
         }
     }
 
-    private void setPlayerName(final TextView v) {
+    private void setPlayerName(final TextView v) { //change the name of the players
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         alertDialogBuilder.setTitle("Title");
@@ -237,10 +229,11 @@ public class Real_GamePlay extends Activity implements View.OnClickListener{
                 dialog.cancel();
             }
         });
-        alertDialogBuilder.show();
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
-    private void resetGame() {
+    private void resetGame() { //clear the board
         counter = 0;
         gameOver = false;
         ((Button)findViewById(R.id.button_1_1)).setText("");
@@ -255,7 +248,7 @@ public class Real_GamePlay extends Activity implements View.OnClickListener{
     }
 
 
-    private void setXorO(Button b) {
+    private void setXorO(Button b) { //set the boxes
         if (b.getText().toString().length() == 0){
             if (counter % 2 == 0) {
                 b.setText("X");
@@ -266,7 +259,7 @@ public class Real_GamePlay extends Activity implements View.OnClickListener{
         }
     }
 
-    private boolean isGameOver(int position){
+    private boolean isGameOver(int position){ //check all conditions for winning
 
         String data11 = ((Button)findViewById(R.id.button_1_1)).getText().toString();
         String data12 = ((Button)findViewById(R.id.button_1_2)).getText().toString();
