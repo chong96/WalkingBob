@@ -5,13 +5,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 public class Cootie_GamePlay extends AppCompatActivity {
 
 
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cootie__game_play);
@@ -20,142 +19,171 @@ public class Cootie_GamePlay extends AppCompatActivity {
         final Cootie player2 = new Cootie();
         final int[] count = {0};
 
-        View rollButton = (Button)findViewById(R.id.realRollButton);
+        final CheckBox cbBody1 = (CheckBox)findViewById(R.id.cbBody1);
+        final CheckBox cbBody2 = (CheckBox)findViewById(R.id.cbBody2);
+        final CheckBox cbHead1 = (CheckBox)findViewById(R.id.cbHead1);
+        final CheckBox cbHead2 = (CheckBox)findViewById(R.id.cbHead2);
+        final CheckBox cbLegs1 = (CheckBox)findViewById(R.id.cbLegs1);
+        final CheckBox cbLegs2 = (CheckBox)findViewById(R.id.cbLegs2);
+        final CheckBox cbAntennae1 = (CheckBox)findViewById(R.id.cbAntennae1);
+        final CheckBox cbAntennae2 = (CheckBox)findViewById(R.id.cbAntennae2);
+        final CheckBox cbTeeth1 = (CheckBox)findViewById(R.id.cbTeeth1);
+        final CheckBox cbTeeth2 = (CheckBox)findViewById(R.id.cbTeeth2);
+        final CheckBox cbEyes1 = (CheckBox)findViewById(R.id.cbEyes1);
+        final CheckBox cbEyes2 = (CheckBox)findViewById(R.id.cbEyes2);
+
+        View rollButton = findViewById(R.id.realRollButton);
         rollButton.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View v) {
+
                 if (!player1.isDone() && !player2.isDone()) {
                     int roll = (int) roll();
-                    Toast.makeText(Cootie_GamePlay.this, "You rolled a " + roll, Toast.LENGTH_SHORT).show();
                     if (count[0] % 2 == 0) {
-
                         switch (roll) {
-
                             case 1:
                                 if (!player1.hasBody) {
                                     player1.hasBody = true;
-                                    Toast.makeText(Cootie_GamePlay.this, "You now have a body!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nYou now have a body!", Toast.LENGTH_SHORT).show();
+                                    cbBody1.toggle();
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "You already have a body, switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 2:
                                 if (player1.hasBody && !player1.hasHead) {
                                     player1.hasHead = true;
                                     player1.hasBoth = true;
-                                    Toast.makeText(Cootie_GamePlay.this, "You now have a head!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nYou now have a head!", Toast.LENGTH_SHORT).show();
+                                    cbHead1.toggle();
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 3:
                                 if (player1.hasBoth) {
                                     player1.antennae = true;
-                                    Toast.makeText(Cootie_GamePlay.this, "You now have an antennae", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nYou now have an antennae!", Toast.LENGTH_SHORT).show();
+                                    cbAntennae1.toggle();
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 4:
                                 if (player1.hasBoth && player1.eyes != 2) {
                                     player1.eyes++;
-                                    Toast.makeText(Cootie_GamePlay.this, "You just added an eye!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nYou just added an eye! You now have: " + player1.eyes +" eye(s).", Toast.LENGTH_SHORT).show();
+                                    if (player1.eyes == 2) {
+                                        cbEyes1.toggle();
+                                    }
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 5:
                                 if (player1.hasBoth) {
                                     player1.teeth = true;
-                                    Toast.makeText(Cootie_GamePlay.this, "You just got teeth!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nYou just got teeth!", Toast.LENGTH_SHORT).show();
+                                    cbTeeth1.toggle();
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 6:
                                 if (player1.hasBoth && player1.legs != 6) {
                                     player1.legs++;
-                                    Toast.makeText(Cootie_GamePlay.this, "You just got a leg!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nYou just added a leg! You now have: " + player1.legs + " leg(s) out of 6.", Toast.LENGTH_SHORT).show();
+                                    if (player1.legs == 6){
+                                        cbLegs1.toggle();
+                                    }
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 1: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                         }
                     } else {
-
                         switch (roll) {
-
                             case 1:
                                 if (!player2.hasBody) {
                                     player2.hasBody = true;
-                                    Toast.makeText(Cootie_GamePlay.this, "You now have a body!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nYou now have a body!", Toast.LENGTH_SHORT).show();
+                                    cbBody2.toggle();
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 2:
                                 if (player2.hasBody && !player2.hasHead) {
                                     player2.hasHead = true;
                                     player2.hasBoth = true;
-                                    Toast.makeText(Cootie_GamePlay.this, "You now have a head!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nYou now have a head!", Toast.LENGTH_SHORT).show();
+                                    cbHead2.toggle();
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 3:
                                 if (player2.hasBoth) {
                                     player2.antennae = true;
-                                    Toast.makeText(Cootie_GamePlay.this, "You now have a body!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nYou now have a body!", Toast.LENGTH_SHORT).show();
+                                    cbAntennae2.toggle();
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 4:
                                 if (player2.hasBoth && player2.eyes != 2) {
                                     player2.eyes++;
-                                    Toast.makeText(Cootie_GamePlay.this, "You just added an eye!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nYou just added an eye! \n You now have: " + player2.eyes +" eye(s).", Toast.LENGTH_SHORT).show();
+                                    if (player2.eyes == 2) {
+                                        cbEyes2.toggle();
+                                    }
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 5:
                                 if (player2.hasBoth) {
                                     player2.teeth = true;
-                                    Toast.makeText(Cootie_GamePlay.this, "You just added teeth!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nYou just added teeth!", Toast.LENGTH_SHORT).show();
+                                    cbTeeth2.toggle();
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                             case 6:
                                 if (player2.hasBoth && player2.legs != 6) {
                                     player2.legs++;
-                                    Toast.makeText(Cootie_GamePlay.this, "You just added a leg!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nYou just added a leg!\nYou now have: " + player2.legs + " leg(s) out of 6.", Toast.LENGTH_SHORT).show();
+                                    if (player2.legs == 6){
+                                        cbLegs2.toggle();
+                                    }
                                     break;
                                 } else {
                                     count[0]++;
-                                    Toast.makeText(Cootie_GamePlay.this, "Switching turns", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Cootie_GamePlay.this, "Player 2: You rolled a " + roll + ".\nSwitching turns", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                         }
@@ -183,7 +211,7 @@ public class Cootie_GamePlay extends AppCompatActivity {
         return((6.0 * Math.random()) + 1);
     }
 
-    public class Cootie {
+    private class Cootie {
         boolean hasBody;
         boolean hasHead;
         boolean hasBoth;
@@ -193,7 +221,7 @@ public class Cootie_GamePlay extends AppCompatActivity {
         int eyes;
 
 
-        public Cootie() {
+        Cootie() {
             hasBody = false;
             hasHead = false;
             hasBoth = false;
@@ -203,7 +231,7 @@ public class Cootie_GamePlay extends AppCompatActivity {
             eyes = 0;
         }
 
-        public boolean isDone() {
+        boolean isDone() {
             boolean isDone = false;
             if (hasBoth && antennae && teeth && legs == 6 && eyes == 2){
                 isDone = true;
