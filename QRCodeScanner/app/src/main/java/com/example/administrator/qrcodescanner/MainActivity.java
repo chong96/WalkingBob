@@ -48,9 +48,7 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
 
     }
 
-    public class JSONTask extends AsyncTask<String,String,String> {
-
-
+    public class JSONTask extends AsyncTask<String,String,String> { //read JSON input
 
         @Override
         protected String doInBackground(String...params) {
@@ -59,13 +57,15 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
             BufferedReader reader = null;
             String finalJson = "";
 
-            if (Patterns.WEB_URL.matcher(params[0]).matches()){
+            if (Patterns.WEB_URL.matcher(params[0]).matches()) { //cehck to see if it's a website
                 Intent visitUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(params[0]));
                 startActivity(visitUrl);
+
             } else {
-                try {
+
+                try { //try to run while catching exceptions
                     URL url = new URL(params[0]);
-                    connection = (HttpURLConnection) url.openConnection();
+                    connection = (HttpURLConnection) url.openConnection(); //open URL
                     connection.connect();
 
                     InputStream stream = connection.getInputStream();
@@ -78,17 +78,17 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
                         buffer.append(line);
                     }
                     finalJson = buffer.toString();
-                    JSONObject parentObject = new JSONObject(finalJson);
-                    JSONArray parentArray = new JSONArray(finalJson);
+                    //JSONObject parentObject = new JSONObject(finalJson);
+                    //JSONArray parentArray = new JSONArray(finalJson);
 
-                    return finalJson;
+                    return buffer.toString();
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    //} catch (JSONException e) {
+                    //e.printStackTrace();
                 } finally {
                     if (connection != null) {
                         connection.disconnect();
@@ -102,19 +102,21 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
                     }
                 }
             }
-            return null;
+                return null;
+
         }
 
 
         protected void onPostExecute(String s) {
+            super.onPostExecute(s);
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder
-                    .setMessage("QR code scanned!")
+                    .setMessage("Code scanned!")
                     .setCancelable(false)
                     .setPositiveButton("Scan another code", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            invokeCamera();
+                            invokeCamera(); //restart camera if they want to scan again
                         }
                     })
                     .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
@@ -132,7 +134,7 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void onClick(View v) {
 
-        if (ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) { //check if they gave camera permissions
             invokeCamera();
         } else {
             String[] permissionsRequested = {Manifest.permission.CAMERA};
@@ -152,7 +154,7 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
         }
     }
 
-    private void invokeCamera() {
+    private void invokeCamera() { //start camera
         mScanner = new ZXingScannerView(this);
         setContentView(mScanner);
         mScanner.setResultHandler(this);
@@ -165,11 +167,11 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
         mScanner.stopCamera();
     }
 
+
     @Override
-    public void handleResult(Result result) {
+    public void handleResult(Result result) { //send the url to JSONTask method
         String url = result.getText();
         new JSONTask().execute(url);
-
 
     }
 }
