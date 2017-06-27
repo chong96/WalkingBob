@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7160e29-2182-4868-8305-ee2a8d3efc1d" name="Default" comment="" />
+    <list default="true" id="fab55273-680e-472a-8089-edfd95bd972b" name="Default" comment="" />
     <ignored path="Walking Bob.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1493,7 +1493,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="C:\Users\Administrator\AndroidStudioProjects\WalkingBob" value="4495736690649" />
+        <entry key="C:\Users\Administrator\AndroidStudioProjects\WalkingBob" value="4495750439157" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1824,9 +1824,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
@@ -1836,23 +1833,15 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WalkingBob" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyTicTacToe" />
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -2055,11 +2044,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f7160e29-2182-4868-8305-ee2a8d3efc1d" name="Default" comment="" />
-      <created>1498578895803</created>
+      <changelist id="fab55273-680e-472a-8089-edfd95bd972b" name="Default" comment="" />
+      <created>1498583477601</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1498578895803</updated>
+      <updated>1498583477601</updated>
     </task>
     <servers />
   </component>
